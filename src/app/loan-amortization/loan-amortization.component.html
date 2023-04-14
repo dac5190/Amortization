@@ -1,0 +1,44 @@
+<mat-form-field>
+  <input matInput type="number" placeholder="Loan Amount" [(ngModel)]="loanAmount">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput type="number" placeholder="Interest Rate" [(ngModel)]="interestRate">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput type="number" placeholder="Loan Term (in months)" [(ngModel)]="loanTerm">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput type="number" placeholder="Payment Frequency" [(ngModel)]="paymentFrequency">
+</mat-form-field>
+
+
+<button mat-raised-button (click)="calculateAmortization()">Calculate Amortization</button>
+
+<div *ngIf="showAmortization">
+  <hr/>
+  <h1>Results</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Payment Number</th>
+        <th>Payment Amount</th>
+        <th>Principal Payment</th>
+        <th>Interest Payment</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of amortizationBreakdown">
+        <td>{{ payment.paymentNumber }}</td>
+        <td>{{ payment.paymentAmount }}</td>
+        <td>{{ payment.principalPayment }}</td>
+        <td>{{ payment.interestPayment }}</td>
+        <td>{{ payment.balance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
